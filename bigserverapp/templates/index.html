@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C + R Users</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    
+    <h1>All the Users</h1>
+    
+
+    
+    <p>{{User.first_name}}</p>
+    <div class="usertable">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+        {% for User in allUsers %}
+        <tr>
+            <td>{{User.id}}</td>
+            <td>{{User.first_name}}  {{User.last_name}}</td>
+            <td>{{User.email_address}}</td>
+            <td>{{User.age}}</td>
+        </tr>
+        {% endfor %}
+
+
+    </table>
+    
+    </div>
+    
+    <h2>Add a User</h2>
+
+            <form action="/createUser" method="post">
+                {% csrf_token %}
+                <div class="textstuff">
+                <label for="fname">First name:</label>
+                <input type="text" id="" name="fname" value=""><br>
+                <label for="email">Email:</label>
+                <input type="text" id="" name="email" value=""><br><br>
+                </div>
+        
+                <div class="textstuff">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="" name="lname" value=""><br>
+                <label for="ageFromForm">Age:</label>
+                <input type="number" id="" name="ageFromForm" value=""><br><br>
+                <input type="submit" value="Add" class="submit">
+                </div>
+            
+
+        
+        </form> 
+        
+        
+        
+
+    
+</body>
+</html>
